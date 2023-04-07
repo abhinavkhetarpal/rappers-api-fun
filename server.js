@@ -3,7 +3,11 @@ const app = express() // using express and storing it in app
 const cors = require('cors') // will handle all the CORS errors for us :)
 const PORT = 8000 // this can be any number
 
+
+app.set("view engine", "ejs")
 app.use(cors()) // allows any client-side device to ping our API
+app.use(express.static('public'))
+
 
 const rappers = {
     '21 savage': {
@@ -25,7 +29,7 @@ const rappers = {
 
 // Tell the server what to do if a user requests the home page
 app.get('/', (request, response) => {
-    response.sendFile(__dirname + '/index.html') // __dirname starts looking for the file wherever the current file (server.js) is located
+    response.render("index") // __dirname starts looking for the file wherever the current file (server.js) is located
 })
 
 app.get('/api/:rapperName', (request, response) => { // the : is not part of the path, it's the query parameter that's being passed in
