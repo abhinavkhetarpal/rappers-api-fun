@@ -3,7 +3,7 @@ const app = express() // using express and storing it in app
 const cors = require('cors') // will handle all the CORS errors for us :)
 const PORT = 8000 // this can be any number
 
-app.use(cors())
+app.use(cors()) // allows any client-side device to ping our API
 
 const rappers = {
     '21 savage': {
